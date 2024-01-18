@@ -89,7 +89,6 @@ $products = $stmt->fetchAll(PDO::FETCH_CLASS,'models\products');
                     <div><?php echo $product->getMarca(); ?></div>
                 </div>
                 <form action="../actions/addcart.php">
-                    <!-- Aggiungi qui gli input necessari per l'aggiunta al carrello -->
                 </form>
             </div>
         <?php endforeach; ?>
@@ -97,7 +96,6 @@ $products = $stmt->fetchAll(PDO::FETCH_CLASS,'models\products');
 
     <hr>
 
-    <!-- Altri elementi della pagina, se necessario -->
 
     </body>
     </html>

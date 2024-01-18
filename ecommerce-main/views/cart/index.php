@@ -7,6 +7,7 @@ require_once "../../database.php";
 require_once "../../models/products.php";
 require_once "../../models/user.php";
 require_once "../../models/carts.php";
+require_once "../../models/cart_products.php";
 
 session_start(); // Avvia la sessione
 
@@ -25,6 +26,10 @@ if(!$cart)
     $stm = $pdo->prepare("insert into carts (user_id) VALUES (:user_id)");
     $stm->bindParam(":user_id", $user_id);
     $stm->execute();
+    $stmt = $pdo->prepare("SELECT * FROM carts WHERE user_id = :user_id");
+    $user_id = $current_user->getId();
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->execute();
     $cart = $stmt->fetchObject('models\carts');
 }
 
@@ -41,7 +46,7 @@ $stmt = $pdo->prepare($query);
 $stmt->bindParam(':cart_id', $cart_id);
 $stmt->execute();
 
-$products = $stmt->fetchAll(PDO::FETCH_CLASS,'models\products');
+$cart_products= $stmt->fetchAll(PDO::FETCH_CLASS,'models\cart_products');
 ?>
 
 <!DOCTYPE html>
@@ -115,24 +120,31 @@ $products = $stmt->fetchAll(PDO::FETCH_CLASS,'models\products');
     <form action="../login.php">
         <input type="submit" value="Logout"/>
     </form>
+    <form action="../products/index.php">
+        <input type="submit" value="Products"/>
+    </form>
 </header>
 
 <div class="products-container">
-    <?php foreach ($products as $product): ?>
+    <?php foreach ($cart_products as $cart_product): ?>
         <div class="product">
             <div class="product-details">
                 <label>ID:</label>
-                <div><?php echo $product->getId(); ?></div>
+                <div><?php echo $cart_product->getProduct_id(); ?></div>
                 <label>Nome:</label>
-                <div><?php echo $product->getNome(); ?></div>
+                <div><?php echo $cart_product->getNome(); ?></div>
                 <label>Prezzo:</label>
-                <div><?php echo $product->getPrezzo(); ?></div>
+                <div><?php echo $cart_product->getPrezzo(); ?></div>
                 <label>Marca:</label>
-                <div><?php echo $product->getMarca(); ?></div>
+                <div><?php echo $cart_product->getMarca(); ?></div>
+                <label>Quantità:</label>
+                <div><?php echo $cart_product->getQuantita(); ?></div>
+                <label>Prezzo totale:</label>
+                <div><?php echo $cart_product->getQuantita() *  $cart_product->getPrezzo(); ?></div>
             </div>
-            <form action="../../actions/addcart.php">
-                <!-- Aggiungi qui gli input necessari per l'aggiunta al carrello -->
-                <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+            <form action="../../actions/remove.php" method="POST">
+                <input type="hidden" name ="cart_products_id" value="<?php echo $cart_product->getId()?>">
+                <button type="submit" class="add-to-cart-btn">Remove</button>
             </form>
         </div>
     <?php endforeach; ?>

@@ -102,8 +102,9 @@ $products = $stmt->fetchAll(PDO::FETCH_CLASS,'models\products');
                 <label>Marca:</label>
                 <div><?php echo $product->getMarca(); ?></div>
             </div>
-            <form action="../../actions/addcart.php">
-                <!-- Aggiungi qui gli input necessari per l'aggiunta al carrello -->
+            <form action="../../actions/addcart.php" method="POST">
+                <input type ="text" name="quantita", value="1">
+                <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
                 <button type="submit" class="add-to-cart-btn">Add to Cart</button>
             </form>
         </div>
@@ -111,9 +112,6 @@ $products = $stmt->fetchAll(PDO::FETCH_CLASS,'models\products');
 </div>
 
 <hr>
-
-<!-- Altri elementi della pagina, se necessario -->
-
 </body>
 </html>
 
