@@ -27,7 +27,7 @@ if ($current_user) {
         header('Location: ../views/products/show.php');
     exit;
 } else {
-    header('Location: ../views/login.php');
+    header('Location: ../views/error.php');
     exit;
 }
 

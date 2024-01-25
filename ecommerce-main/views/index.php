@@ -18,47 +18,7 @@ $products = $stmt->fetchAll(PDO::FETCH_CLASS,'models\products');
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-            }
-
-            header {
-                text-align: right;
-                padding: 10px;
-                background-color: #f0f0f0;
-            }
-
-            form {
-                display: inline-block;
-                margin-left: 10px;
-            }
-
-            .products-container {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 20px;
-                padding: 20px;
-            }
-
-            .product {
-                border: 1px solid #ddd;
-                padding: 10px;
-                border-radius: 5px;
-            }
-
-            label {
-                font-weight: bold;
-            }
-
-            hr {
-                margin: 20px 0;
-                border: none;
-                border-top: 1px solid #ddd;
-            }
-        </style>
+        <link rel="stylesheet" href="../css/styles.css">
         <title>Your Store</title>
     </head>
     <body>
@@ -70,7 +30,7 @@ $products = $stmt->fetchAll(PDO::FETCH_CLASS,'models\products');
             <input type="submit" value="Signup"/>
         </form>
     </header>
-
+    <div class="title">Index</div>
     <div class="products-container">
         <?php foreach ($products as $product): ?>
             <div class="product">
@@ -89,7 +49,6 @@ $products = $stmt->fetchAll(PDO::FETCH_CLASS,'models\products');
                     <div><?php echo $product->getMarca(); ?></div>
                 </div>
                 <form action="../actions/addcart.php">
-                    <!-- Aggiungi qui gli input necessari per l'aggiunta al carrello -->
                 </form>
             </div>
         <?php endforeach; ?>
@@ -97,7 +56,6 @@ $products = $stmt->fetchAll(PDO::FETCH_CLASS,'models\products');
 
     <hr>
 
-    <!-- Altri elementi della pagina, se necessario -->
 
     </body>
     </html>

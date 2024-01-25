@@ -1,0 +1,126 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: right;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+form {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.product-details {
+    margin-bottom: 10px;
+}
+
+.add-to-cart-btn {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+label {
+    font-weight: bold;
+}
+
+hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+.title {
+    text-align: center; /* Centra il testo */
+    font-size: 48px; /* Dimensione del carattere */
+    padding: 30px; /* Spazio interno */
+    border: 3px solid #28a745; /* Bordo verde */
+    border-radius: 15px; /* Arrotonda gli angoli */
+    margin-top: 50px; /* Distanza dalla parte superiore della pagina */
+    background-color: #f0f0f0; /* Colore di sfondo grigio */
+    color: #28a745; /* Colore del testo verde */
+}
+
+/* Stili per il contenitore degli input */
+.input-container {
+    display: flex; /* Utilizza un layout flessibile */
+    justify-content: center; /* Allinea gli elementi al centro orizzontalmente */
+    align-items: center; /* Allinea gli elementi al centro verticalmente */
+    height: 100vh; /* Altezza pari all'altezza della viewport */
+}
+
+/* Stili per i campi di input */
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%; /* Larghezza ridotta al 50% */
+    padding: 20px; /* Spazio interno aumentato */
+    border: 2px solid #28a745; /* Bordo verde */
+    border-radius: 10px; /* Arrotonda gli angoli */
+    font-size: 16px; /* Dimensione del carattere ingrandita di due volte */
+    margin-bottom: 20px; /* Spazio inferiore tra i campi */
+}
+
+/* Stili per il gruppo di radio button */
+.radio-buttons {
+    display: flex; /* Utilizza un layout flessibile */
+     /* Distribuisce uniformemente gli elementi all'interno del contenitore */
+    transform: scale(2); /* Ingrossa i radio button di due volte */
+    margin-right: 10px; /* Margine a destra per separare i radio button */
+    flex-direction: column; /* Imposta la direzione del layout a colonna */
+    align-items: center;
+}
+
+/* Stili per i radio button */
+.radio-buttons label {
+    margin-right: 10px; /* Margine a destra per separare i radio button */
+}
+
+/* Stili per il pulsante */
+input[type="submit"] {
+    background-color: #28a745; /* Colore di sfondo verde */
+    color: white; /* Colore del testo bianco */
+    cursor: pointer; /* Mostra il cursore a mano */
+}
+
+input[type="submit"]:hover {
+    background-color: #218838; /* Cambia il colore di sfondo al passaggio del mouse */
+}
+
+/* Stili per il link "Accedi" */
+h3 a {
+    color: #007bff; /* Colore del testo blu */
+    text-decoration: none; /* Rimuove il sottolineato */
+}
+
+h3 a:hover {
+    text-decoration: underline; /* Sottolinea il link al passaggio del mouse */
+}
+
+
