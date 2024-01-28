@@ -1,19 +1,14 @@
 <?php
 
-require_once "../database.php";
 require_once "../models/user.php";
 require_once "../models/session.php";
 
-$email = $_POST["email"];
-//$password = hash('sha256',$_POST["password"]);
-$password = hash('sha256',$_POST["password"]);
+$params = [
+    'email' => $_POST["email"],
+    'password' => hash('sha256',$_POST["password"])
+];
 
-$pdo = Database::Connessione('localhost', 'ecommerce5E', '/config.txt');
-$stm = $pdo->prepare("select * from ecommerce5E.users where email=:email and password=:password limit 1");
-$stm->bindParam(":email", $email);
-$stm->bindParam(":password", $password);
-$stm->execute();
-$current_user = $stm->fetchObject("\models\user");
+$current_user = \models\user::find($params);
 
 if ($current_user) {
     session_save_path("../sessions");
