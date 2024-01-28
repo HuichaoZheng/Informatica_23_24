@@ -2,15 +2,9 @@
 session_save_path("../sessions");
 session_start(); // Avvia la sessione
 
-require_once "../database.php";
 require_once "../models/products.php";
 
-$pdo = Database::Connessione('localhost', 'ecommerce5E', '/config.txt');
-
-$query = "SELECT * FROM products";
-$stmt = $pdo->query($query);
-
-$products = $stmt->fetchAll(PDO::FETCH_CLASS,'models\products');
+$products = \models\products::findAll();
 ?>
 
     <!DOCTYPE html>

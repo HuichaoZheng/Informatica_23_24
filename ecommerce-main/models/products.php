@@ -2,6 +2,7 @@
 
 namespace models;
 require_once $_SERVER['DOCUMENT_ROOT']."/database.php";
+use PDO;
 
 class products
 {
@@ -69,5 +70,14 @@ class products
         $stm->bindParam(":id", $params['id']);
         $stm->execute();
     }
+    public static function findAll()
+    {
+        $pdo = \Database::Connessione('localhost', 'ecommerce5E', '/config.txt');
 
+        $query = "SELECT * FROM products";
+        $stmt = $pdo->query($query);
+
+        return $stmt->fetchAll(PDO::FETCH_CLASS,'models\products');
+    }
+    
 }
