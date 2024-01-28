@@ -10,6 +10,9 @@
 <body>
 <link rel="stylesheet" href="../css/styles.css">
 <header>
+    <form action="index.php">
+        <input type="submit" value="Index"/>
+    </form>
     <form action="login.php">
         <input type="submit" value="Login"/>
     </form>
@@ -30,7 +33,6 @@
     <input type="submit" value="Registra"/>
 </form>
 </div>
-<h3>Hai già l'account? <a href = "login.php">Accedi</a></h3>
 
 </body>
 

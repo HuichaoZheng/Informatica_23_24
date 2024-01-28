@@ -25,5 +25,4 @@
         public function setUsedId($used_id) {
             $this->used_id = $used_id;
         }
-
     }

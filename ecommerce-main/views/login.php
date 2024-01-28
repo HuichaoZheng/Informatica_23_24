@@ -9,9 +9,13 @@
 
 <body>
 <link rel="stylesheet" href="../css/styles.css">
+
 <header>
+    <form action="index.php">
+        <input type="submit" value="Index"/>
+    </form>
     <form action="signup.php">
-        <input type="submit" value="Registra"/>
+        <input type="submit" value="Signup"/>
     </form>
 </header>
 <div class="title">Login page</div>

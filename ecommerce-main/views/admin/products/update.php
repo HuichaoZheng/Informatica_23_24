@@ -20,7 +20,15 @@ if(!isset($_SESSION['current_user']))
 </head>
 <body>
 <link rel="stylesheet" href="../../../css/styles.css">
-<div class="title">Crea</div>
+<header>
+    <form action="../../logout.php">
+        <input type="submit" value="Logout"/>
+    </form>
+    <form action="../../products/show.php">
+        <input type="submit" value="Gestione prodotto"/>
+    </form>
+</header>
+<div class="title">Modifica</div>
 
 <div class="input-container">
 <form action="../../../actions/update.php" method="post">

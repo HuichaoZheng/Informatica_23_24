@@ -16,6 +16,14 @@ if(!isset($_SESSION['current_user']))
 </head>
 <body>
 <link rel="stylesheet" href="../../../css/styles.css">
+<header>
+    <form action="../../logout.php">
+        <input type="submit" value="Logout"/>
+    </form>
+    <form action="../../products/show.php">
+        <input type="submit" value="Gestione prodotto"/>
+    </form>
+</header>
 <div class="title">Crea</div>
 <div class="input-container">
 <form action="../../../actions/create.php" method="post">
