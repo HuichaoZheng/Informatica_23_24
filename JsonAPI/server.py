@@ -25,7 +25,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         # GET di un singolo prodotto
         elif self.path.startswith('/products/'):
             product_id = self.path.split('/')[-1]
-            product = Product.find_by_id(product_id)
+            product = Product.find(product_id)
             # Se si trova il prodotto
             if product:
                 data = {"type": "products", "id": str(product[0]), "attributes": {"nome": product[1], "prezzo": product[2], "marca": str(product[3])}}
@@ -52,7 +52,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length)
             new_product = json.loads(post_data)['data']['attributes']
-            new_product_id = Product.insert_product(new_product)
+            new_product_id = Product.post(new_product)
 
             data = {"type": "products", "id": str(new_product_id), "attributes": new_product}
             self.send_response(201)
@@ -90,7 +90,7 @@ class RequestHandler(BaseHTTPRequestHandler):
     def do_DELETE(self):
         if self.path.startswith('/products/'):
             product_id = self.path.split('/')[-1]
-            existing_product = Product.find_by_id(product_id)
+            existing_product = Product.find(product_id)
             # Controlla se il prodotto esiste prima di eliminarlo
             if existing_product:
                 product = Product(existing_product)

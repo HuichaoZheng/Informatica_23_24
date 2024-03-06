@@ -9,24 +9,6 @@ class Product:
         self.nome = ary[1]
         self.marca = ary[2]
         self.prezzo = ary[3]
-    
-    def get_id(self):
-        return self.id
-    
-    def set_nome(self, nome):
-        self.nome = nome
-    def get_nome(self):
-        return self.nome
-    
-    def set_marca(self, marca):
-        self.marca = marca
-    def get_marca(self):
-        return self.marca
-    
-    def set_prezzo(self, prezzo):
-        self.prezzo = prezzo
-    def get_prezzo(self):
-        return self.prezzo
 
     @staticmethod
     def fetch_all():
@@ -39,9 +21,7 @@ class Product:
         return products
     
     @staticmethod
-    def find_by_id(product_id):
-        
-        
+    def find(product_id):
         #connessione al database
         database = Db.connect()
         mycursor = database.cursor()
@@ -52,7 +32,7 @@ class Product:
         return product
         
     @staticmethod
-    def insert_product(new_product):
+    def post(new_product):
         # Connessione al database
         database = Db.connect()
         mycursor = database.cursor()
@@ -65,7 +45,7 @@ class Product:
         return new_product_id
     
     @staticmethod
-    def update (update_data, product_id):
+    def update(update_data, product_id):
         # Connessione al database
         database = Db.connect()
         mycursor = database.cursor()
