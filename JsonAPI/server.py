@@ -11,7 +11,6 @@ mydb = mysql.connector.connect(
     database="products"
 )
 mycursor = mydb.cursor()
-
 class RequestHandler(BaseHTTPRequestHandler):
     # GET
     def do_GET(self):
@@ -55,7 +54,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         if self.path == '/products':
             content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length)
-            new_product = json.loads(post_data)['data']['attributes']  # Modifica qui per accedere ai dati correttamente
+            new_product = json.loads(post_data)['data']['attributes']
             sql = "INSERT INTO products (nome, prezzo, marca) VALUES (%s, %s, %s)"
             val = (new_product["nome"], new_product["prezzo"], new_product["marca"])
             mycursor.execute(sql, val)
@@ -79,7 +78,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             product_id = self.path.split('/')[-1]
             content_length = int(self.headers['Content-Length'])
             patch_data = self.rfile.read(content_length)
-            update_data = json.loads(patch_data)['data']['attributes']  # Modifica qui per accedere ai dati correttamente
+            update_data = json.loads(patch_data)['data']['attributes']
 
             sql = "UPDATE products SET "
             val = []
