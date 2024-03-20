@@ -1,14 +1,9 @@
 # Importazione librerie
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
-
-from db import Db
 from products import Product
 
-# Connessione al database MySQL
-database = Db.connect()
-mycursor = database.cursor()
-
+# Classe per la gestione delle requests
 class RequestHandler(BaseHTTPRequestHandler):
     # GET
     def do_GET(self):
@@ -101,6 +96,7 @@ class RequestHandler(BaseHTTPRequestHandler):
                 self.send_response(404)
                 self.end_headers()
                 self.wfile.write(json.dumps({"message": "Prodotto non trovato"}).encode())
+        # Endpoint errato
         else:
             self.send_response(404)
             self.end_headers()
